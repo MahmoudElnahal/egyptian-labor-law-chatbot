@@ -1,3 +1,26 @@
+# Egyptian Labor Law Chatbot
+
+A RAG assistant for Egyptian Labor Law No. 14 of 2025 and its executive decisions. Ask in formal or colloquial Arabic and get an answer grounded in the official text, with the article number and page.
+
+- **Hybrid retrieval:** exact article-number lookup, BM25 over normalized Arabic with a legal-synonym layer, and optional embeddings, fused with Reciprocal Rank Fusion
+- **Measured:** 94% Recall@8 and 83% top-1 on an 18-question evaluation set using lexical search alone (`scripts/eval_retrieval.py`)
+- **Cheap to run:** retrieval works with no API key; the key is only needed to phrase the final answer
+- **Corpus:** 796 chunks and 297 indexed articles extracted from 8 official PDFs
+
+**Stack:** Python · FastAPI · BM25 · OpenAI · vanilla web UI
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env      # add OPENAI_API_KEY (optional)
+./run.sh                  # http://127.0.0.1:8000
+```
+
+See also [smart-legal-advisor](https://github.com/MahmoudElnahal/smart-legal-advisor), the React voice-and-chat front end for the same domain.
+
+The full documentation below is in Arabic.
+
+---
+
 # شات بوت قانون العمل المصري
 
 بروتوتايب شغّال: موقع ويب تسأله عن قانون العمل رقم 14 لسنة 2025 وقراراته التنفيذية،
